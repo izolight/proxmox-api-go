@@ -99,6 +99,15 @@ func (c *Client) GetRoles() ([]Role, error) {
 	return roles, nil
 }
 
+func (c *Client) GetRole(roleid string) (Role, error) {
+	role := Role{}
+	err := c.get("/access/groups/" + roleid, nil, &role)
+	if err != nil {
+		return role, err
+	}
+	return role, nil
+}
+
 type User struct {
 	Comment   string `json:"comment,omitempty"`
 	Email     string `json:"email,omitempty"`
@@ -117,6 +126,15 @@ func (c *Client) GetUsers() ([]User, error) {
 		return nil, err
 	}
 	return users, nil
+}
+
+func (c *Client) GetUser(userid string) (User, error) {
+	user := User{}
+	err := c.get("/access/groups/" + userid, nil, &user)
+	if err != nil {
+		return user, err
+	}
+	return user, nil
 }
 
 type ACL struct {
