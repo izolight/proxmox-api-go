@@ -1,6 +1,6 @@
 package api
 
-func (c *Client) GetNodes() ([]string, error) {
+func (c *Client) GetClusterNodes() ([]string, error) {
     var nodes []string
     err := c.get("/cluster/config/nodes", nil, &nodes)
     return nodes, err
